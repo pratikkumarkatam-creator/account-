@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-canvas font-sans text-ink;
+  }
+
+  ::selection {
+    @apply bg-royal/20;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.55;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-slate-200/80 bg-white shadow-card;
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-slate-700;
+  }
+
+  .input {
+    @apply h-10 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-ink transition placeholder:text-slate-400 focus:border-royal focus:outline-none focus:ring-4 focus:ring-royal/10 disabled:cursor-not-allowed disabled:bg-slate-50;
+  }
+
+  .input-error {
+    @apply border-debit focus:border-debit focus:ring-debit/10;
+  }
+
+  .table-head {
+    @apply bg-slate-50/80 text-[11px] font-semibold uppercase tracking-wider text-slate-500;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+}
+
+/* Statement printing: only the statement preview is sent to the printer. */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-area {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .app-shell {
+    display: block !important;
+  }
+
+  .app-shell {
+    padding-left: 0 !important;
+  }
+
+  .app-main {
+    padding: 0 !important;
+  }
+
+  .app-main > div {
+    max-width: none !important;
+  }
+}
